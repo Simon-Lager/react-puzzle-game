@@ -10,31 +10,38 @@ type SizeButtonProps = {
 }
 
 export const Wrapper = styled.main`
-  background: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 `
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 450px;
-  padding: 20px;
+  max-width: 550px;
+  padding: 0 10px;
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 20px;
+  }
 `
 
 export const Board = styled.div<BoardProps>`
   width: 100%;
   background: #2a9d8f;
-  padding: 10px;
+  gap: 5px;
+  padding: 5px;
   border-radius: 10px;
   position: relative;
-  aspect-ratio: 1;
   display: grid;
   grid-template-columns: repeat(${(p) => p.$gridSize}, 1fr);
-  gap: 10px;
   position: relative;
+
+  @media only screen and (min-width: 768px) {
+    gap: 10px;
+    padding: 10px;
+  }
 `
 
 export const Title = styled.h1`

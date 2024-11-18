@@ -8,23 +8,23 @@ type Position = {
 type Props = {
   tile: number
   index: number
-  gridSize: number
   position: Position
   emptyPosition: Position
+  emptyIndex: number
   handleTileClick: (index: number, position: Position) => void
 }
 
 const Tile = ({
   tile,
   index,
-  gridSize,
   position,
   emptyPosition,
+  emptyIndex,
   handleTileClick
 }: Props) => {
   const canMove =
     position.x === emptyPosition.x || position.y === emptyPosition.y
-  const isEmpty = tile + 1 === gridSize * gridSize
+  const isEmpty = index === emptyIndex
 
   return (
     <TileContainer

@@ -4,31 +4,48 @@ import Button from "./Button"
 import { ToolbarContainer, SizeSelect, SizeButton, Qty } from "./Toolbar.styled"
 
 type Props = {
-  gridSize: number
-  setGridSize: React.Dispatch<React.SetStateAction<number>>
+  columns: number
+  rows: number
+  setColumns: React.Dispatch<React.SetStateAction<number>>
+  setRows: React.Dispatch<React.SetStateAction<number>>
   setTiles: React.Dispatch<React.SetStateAction<number[]>>
 }
 
-const Toolbar = ({ gridSize, setGridSize, setTiles }: Props) => (
+const Toolbar = ({ columns, rows, setColumns, setRows, setTiles }: Props) => (
   <ToolbarContainer>
-    <SizeSelect>
-      <SizeButton
-        handleOnClick={() => setGridSize(gridSize - 1)}
-        $disabled={gridSize === MIN_GRID_SIZE}
-      >
-        -
-      </SizeButton>
-      <Qty>
-        {gridSize} x {gridSize}
-      </Qty>
-      <SizeButton
-        handleOnClick={() => setGridSize(gridSize + 1)}
-        $disabled={gridSize === MAX_GRID_SIZE}
-      >
-        +
-      </SizeButton>
-    </SizeSelect>
-    <Button handleOnClick={() => setTiles(shuffleTiles(gridSize))}>
+    <div>
+      <SizeSelect>
+        <SizeButton
+          handleOnClick={() => setColumns(columns - 1)}
+          $disabled={columns === MIN_GRID_SIZE}
+        >
+          -
+        </SizeButton>
+        <Qty>↔</Qty>
+        <SizeButton
+          handleOnClick={() => setColumns(columns + 1)}
+          $disabled={columns === MAX_GRID_SIZE}
+        >
+          +
+        </SizeButton>
+      </SizeSelect>
+      <SizeSelect>
+        <SizeButton
+          handleOnClick={() => setRows(rows - 1)}
+          $disabled={rows === MIN_GRID_SIZE}
+        >
+          -
+        </SizeButton>
+        <Qty>↕</Qty>
+        <SizeButton
+          handleOnClick={() => setRows(rows + 1)}
+          $disabled={rows === MAX_GRID_SIZE}
+        >
+          +
+        </SizeButton>
+      </SizeSelect>
+    </div>
+    <Button handleOnClick={() => setTiles(shuffleTiles(columns * rows))}>
       New game
     </Button>
   </ToolbarContainer>

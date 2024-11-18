@@ -1,19 +1,19 @@
 // Create shuffled array based on gridsize
 export const shuffleTiles = (gridSize: number) =>
-  [...Array(gridSize * gridSize).keys()]
+  [...Array(gridSize).keys()]
     .map((tile) => ({ value: tile, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map((tile) => tile.value)
 
 // Calculate x, y position for tile
-export const calculatePosition = (index: number, gridSize: number) => {
-  const x = index % gridSize === 0 ? gridSize : index % gridSize
-  const y = Math.ceil(index / gridSize)
+export const calculatePosition = (index: number, columns: number) => {
+  const x = index % columns === 0 ? columns : index % columns
+  const y = Math.ceil(index / columns)
 
   return { x, y }
 }
 
-// Swap position of two tiles
+// Swap position of tile and empty tile
 const swap = (tiles: number[], tile: number, emptyTile: number) => {
   ;[tiles[tile], tiles[emptyTile]] = [tiles[emptyTile], tiles[tile]]
 

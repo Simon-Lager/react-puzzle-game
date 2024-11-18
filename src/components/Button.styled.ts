@@ -3,11 +3,11 @@ import styled from "styled-components"
 export const StyledButton = styled.button`
   border: 0;
   border-radius: 5px;
-  padding: 0 15px;
+  padding: 0 05px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
-  height: 45px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,6 +18,8 @@ export const StyledButton = styled.button`
   @media only screen and (min-width: 768px) {
     transition: opacity 0.4s;
     padding: 0 40px;
+    font-size: 16px;
+    height: 45px;
 
     &:hover {
       opacity: 0.8;
